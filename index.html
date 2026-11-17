@@ -4,14 +4,48 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>prixfixe</title>
+		<meta name="description" content="prixfixe is small software for making menus.">
+		<meta name="author" content="interrobang">
+		<meta name="color-scheme" content="light dark">
+		<meta name="theme-color" content="#f7f7f7" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
+		<meta property="og:title" content="prixfixe">
+		<meta property="og:description" content="Small software for making menus.">
+		<meta property="og:type" content="website">
 		<style>
+			:root {
+				color-scheme: light dark;
+				--bg: #f7f7f7;
+				--fg: #222;
+				--muted: #666;
+				--hover: #000;
+				--select: aliceblue;
+			}
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--bg: #181818;
+					--fg: #ddd;
+					--muted: #999;
+					--hover: #fff;
+					--select: #2a3a4a;
+				}
+			}
+			@media (prefers-contrast: more) {
+				:root {
+					--muted: var(--fg);
+				}
+			}
+			html {
+				-webkit-text-size-adjust: 100%;
+			}
 			body {
 				margin: 0;
 				min-height: 100vh;
+				min-height: 100dvh;
 				display: grid;
 				place-items: center;
-				background: #f7f7f7;
-				color: #222;
+				background: var(--bg);
+				color: var(--fg);
 				font-family: sans-serif;
 			}
 			main {
@@ -23,7 +57,7 @@
 			}
 			.byline {
 				margin-top: 0.25rem;
-				color: #888;
+				color: var(--muted);
 				font-size: 0.9rem;
 			}
 			a {
@@ -36,12 +70,20 @@
 			}
 			a:hover,
 			a:focus {
-				color: #000;
+				color: var(--hover);
 				font-weight: 400;
-				outline: none;
+			}
+			a:focus-visible {
+				outline: 2px solid;
+				outline-offset: 2px;
 			}
 			::selection {
-				background: aliceblue;
+				background: var(--select);
+			}
+			@media (prefers-reduced-motion: reduce) {
+				a {
+					transition: none;
+				}
 			}
 		</style>
 	</head>
